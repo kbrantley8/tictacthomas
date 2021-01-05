@@ -1,0 +1,9 @@
+export const START_GAME = 'START_GAME';
+export const END_GAME = 'END_GAME';
+export const SWITCH_PLAYER_TURN = 'SWITCH_PLAYER_TURN';
+export const SWITCH_GAMEMODE = 'SWITCH_GAMEMODE';
+export const PLAYER_ACTION = 'PLAYER_ACTION';
+export const PLAYER1_WINS = 'PLAYER1_WINS';
+export const PLAYER2_WINS = 'PLAYER2_WINS';
+export const PLAYERS_TIE = 'PLAYERS_TIE';
+export const RESET_GAME = 'RESET_GAME';
