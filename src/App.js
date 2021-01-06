@@ -15,9 +15,20 @@ class App extends React.Component {
     super(props)
     document.body.style = 'background: black;';
     // evaluateBoard(this.props.board, true);
+    this.state = {
+      board: [0, 0, 0, 0, 0, 0, 0, 0, 0]
+    }
   }
+
+  updateBoard = (index, value) => {
+    console.log(index, value)
+    var new_board = this.state.board;
+    new_board[index] = value;
+    this.setState({ board: new_board })
+  }
+
   render() {
-    console.log(this.props.board);
+    console.log(this.state.board);
     evaluateBoard(this.props.board, true);
     return (
       <div className="App">
@@ -27,13 +38,15 @@ class App extends React.Component {
         </div>
         <div id="game_board">
           <div className="game_board_outline">
-            {this.props.board.map((status, index) => (
-              <Square 
+            {this.state.board.map(function(status, index) {
+              console.log(status, index)
+              return <Square 
+                key={index}
                 status={status}
                 index={index}
-                board={this.props.board}
+                updateBoard={this.updateBoard}
               />
-            ))}
+            }, this)}
           </div>
         </div>
         <div id="player_info">

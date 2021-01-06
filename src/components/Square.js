@@ -14,31 +14,36 @@ const indexList = [
     "bottom right"
 ]
 
-const mapStateToProps = state => ({
-    ...state.player
-});
+// const mapStateToProps = state => ({
+//     ...state.player,
+//     ...state.board
+// });
 
-const mapDispatchToProps = dispatch => ({
-    placeMove: (ind, player) => dispatch({ type: PLAYER_ACTION, payload: [ ind, player ] }),
-    switchTurn: () => dispatch({ type: SWITCH_PLAYER_TURN })
+// const mapDispatchToProps = dispatch => ({
+//     placeMove: (ind, player) => dispatch({ type: PLAYER_ACTION, payload: [ ind, player ] }),
+//     switchTurn: () => dispatch({ type: SWITCH_PLAYER_TURN })
 
-});
+// });
 
 class Square extends React.Component {
     constructor(props) {
         super(props)
-
+    
         this.state = {
             status: props.status,
             index: props.index
         }
+        this.updateBoard = props.updateBoard;
     }
     
     render() {
+        // console.log(this.props)
+        // console.log(this.state)
         switch(this.state.status) {
             case 0: 
                 return (
-                    <div id={'square' + this.state.index} className="square" onClick={() => this.handleSquareClick()}>
+                    //the 1 in updateBoard is just for testing, just to force it turn to an X
+                    <div id={'square' + this.state.index} className="square" onClick={() => this.updateBoard(this.state.index, 1)}> 
                         <div className={indexList[this.state.index]}>
                         </div>
                     </div>
@@ -73,4 +78,5 @@ class Square extends React.Component {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Square);
+// export default connect(mapStateToProps, mapDispatchToProps)(Square);
+export default connect(null, null)(Square);

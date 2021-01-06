@@ -18,13 +18,13 @@ class Menu extends React.Component {
     render() {
         return (
             <div className="menu">
-                <div className={(this.props.gamemode === 0) ? "selected" : ""}>
+                <div className={(this.props.gamemode === 0) ? "selected menu_item" : "menu_item"}>
                     <h3 onClick={() => this.props.changeGamemode(0)}>Player vs AI</h3>
                 </div>
                 <div style={{ padding: '7px'}}>
                     <h3>~OR~</h3>
                 </div>
-                <div className={(this.props.gamemode === 1) ? "selected" : ""}>
+                <div className={(this.props.gamemode === 1) ? "selected menu_item" : "menu_item"}>
                     <h4 onClick={() => this.props.changeGamemode(1)} style={{marginTop: '4px'}}>Player vs Player</h4>
                 </div>
             </div>
