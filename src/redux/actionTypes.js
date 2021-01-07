@@ -7,3 +7,5 @@ export const PLAYER1_WINS = 'PLAYER1_WINS';
 export const PLAYER2_WINS = 'PLAYER2_WINS';
 export const PLAYERS_TIE = 'PLAYERS_TIE';
 export const RESET_GAME = 'RESET_GAME';
+export const AI_TURN = 'AI_TURN';
+export const CHECK_WIN = 'CHECK_WIN';

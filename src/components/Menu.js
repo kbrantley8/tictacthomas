@@ -25,7 +25,7 @@ class Menu extends React.Component {
                     <h3>~OR~</h3>
                 </div>
                 <div className={(this.props.gamemode === 1) ? "selected menu_item" : "menu_item"}>
-                    <h4 onClick={() => this.props.changeGamemode(1)} style={{marginTop: '4px'}}>Player vs Player</h4>
+                    <h4 onClick={() => this.props.changeGamemode(1)} >Player vs Player</h4>
                 </div>
             </div>
         )
