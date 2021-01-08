@@ -47,11 +47,11 @@ export class Game_AI {
         var moveList = [];
         var candidateMoves = [];
         var evaluationList = [];
-        for (var i=0; i < board.length; i++) {
+        for (var j=0; j < board.length; j++) {
             var boardCopy = [...board];
-            if (board[i] === 0) {
-                boardCopy[i] = player_turn;
-                moveList.push(i);
+            if (board[j] === 0) {
+                boardCopy[j] = player_turn;
+                moveList.push(j);
                 evaluationList.push(this.evaluateBoard(boardCopy, false));
             }
         }
@@ -62,9 +62,9 @@ export class Game_AI {
             evaluation = Math.min(...evaluationList);
         }
 
-        for (var i=0; i < evaluationList.length; i++) {
-            if (evaluationList[i] === evaluation) {
-                candidateMoves.push(moveList[i]);
+        for (var k=0; k < evaluationList.length; k++) {
+            if (evaluationList[k] === evaluation) {
+                candidateMoves.push(moveList[k]);
             }
         }
         

@@ -32,11 +32,17 @@ class Square extends React.Component {
     
         this.state = {
             status: props.status,
-            index: props.index
+            index: props.index,
         }
+        this.stillTurn = false;
     }
     
     render() {
+        if (this.props.gamemode === 0) {
+            if (this.props.currentPlayer === 1) {
+                this.stillTurn = true;
+            }
+        }
         switch(this.state.status) {
             case 0: 
                 return (
@@ -63,10 +69,20 @@ class Square extends React.Component {
                         </div>
                     </div>
                 );
+            default:
+                return (
+                    <div id={'square' + this.state.index} className="square" onClick={() => this.handleSquareClick()}> 
+                        <div className={indexList[this.state.index]}>
+                        </div>
+                    </div>
+                );
         }
     }
 
     handleSquareClick = () => {
+        if (!this.stillTurn && this.props.gamemode === 0) {
+            return;
+        }
         if (this.state.status === 0 && this.props.inProgress === true) {
             this.props.placeMove(this.state.index, this.props.currentPlayer)
             this.props.switchTurn()

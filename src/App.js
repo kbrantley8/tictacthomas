@@ -2,7 +2,6 @@ import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import Square from './components/Square';
-import Menu from './components/Menu';
 import { CHECK_WIN, PLAYER1_WINS, PLAYER2_WINS, PLAYERS_TIE, START_GAME, SWITCH_GAMEMODE } from './redux/actionTypes'
 
 const mapStateToProps = state => ({
@@ -22,7 +21,6 @@ const mapDispatchToProps = dispatch => ({
 class App extends React.Component {
   constructor(props) {
     super(props)
-    console.log(this.props)
     document.body.style = 'background: black;';
     this.props.startGame();
   }
@@ -54,8 +52,6 @@ class App extends React.Component {
   }
 
   render() {
-    // console.log(evaluateBoard(this.props.board, true));
-    console.log(this.props)
     return (
       <div className="App">
         <div id="title">

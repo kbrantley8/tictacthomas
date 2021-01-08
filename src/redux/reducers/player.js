@@ -16,7 +16,7 @@ const defaultState = {
     ties: 0
 }
 
-export default (state = defaultState, action) => {
+var playere_reducer = (state = defaultState, action) => {
     switch (action.type) {
         case START_GAME:
             return {
@@ -65,3 +65,5 @@ export default (state = defaultState, action) => {
             return state;
     }
 };
+
+export default playere_reducer;

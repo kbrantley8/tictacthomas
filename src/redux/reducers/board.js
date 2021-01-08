@@ -20,7 +20,7 @@ const defaultState = {
     winner: 0
 }
 
-export default (state = defaultState, action) => {
+var board_reducer = (state = defaultState, action) => {
     switch (action.type) {
         case START_GAME:
             return {
@@ -70,10 +70,10 @@ export default (state = defaultState, action) => {
             }
         case AI_TURN:
             if (state.gamemode === 0 && action.payload === 1 && state.inProgress) {
-                var game_ai = new Game_AI();
+                game_ai = new Game_AI();
                 game_ai.evaluateBoard(state.board, true);
                 var ind = game_ai.getCandidateMove();
-                var new_board = [...state.board];
+                new_board = [...state.board];
                 new_board[ind] = 2;
                 if (game_ai.XWin(new_board)) {
                     return {
@@ -100,6 +100,10 @@ export default (state = defaultState, action) => {
                         winner: 0
                     };
                 }
+            } else {
+                return {
+                    ...state
+                }
             }
         case PLAYER1_WINS:
         case PLAYER2_WINS:
@@ -119,3 +123,5 @@ export default (state = defaultState, action) => {
             return state;
     }
 };
+
+export default board_reducer;
