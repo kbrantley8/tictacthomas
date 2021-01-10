@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { PLAYER_ACTION, SWITCH_PLAYER_TURN, AI_TURN, RESET_GAME } from '../redux/actionTypes'
+import { PLAYER_ACTION, AI_TURN, RESET_GAME } from '../redux/actionTypes'
 
 const indexList = [
     "top left",
@@ -21,7 +21,6 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch => ({
     placeMove: (ind, player) => dispatch({ type: PLAYER_ACTION, payload: [ ind, player ] }),
-    switchTurn: () => dispatch({ type: SWITCH_PLAYER_TURN }),
     AITurn: (currentPlayer) => dispatch({ type: AI_TURN, payload: currentPlayer }),
     resetBoard: () => dispatch({ type: RESET_GAME })
 });
@@ -85,12 +84,10 @@ class Square extends React.Component {
         }
         if (this.state.status === 0 && this.props.inProgress === true) {
             this.props.placeMove(this.state.index, this.props.currentPlayer)
-            this.props.switchTurn()
             if (this.props.currentPlayer === 1 && this.props.gamemode === 0) {
                 var currentThis = this;
                 setTimeout(function() {
                     currentThis.props.AITurn(currentThis.props.currentPlayer)
-                    currentThis.props.switchTurn()
                 }, 500);
             }
         } else if (this.props.inProgress === false) {

@@ -1,6 +1,5 @@
 import {
     START_GAME,
-    END_GAME,
     SWITCH_GAMEMODE,
     PLAYER_ACTION,
     AI_TURN,
@@ -26,11 +25,6 @@ var board_reducer = (state = defaultState, action) => {
             return {
                 ...state,
                 inProgress: true
-            };
-        case END_GAME:
-            return {
-                ...state,
-                inProgress: false
             };
         case SWITCH_GAMEMODE:
             return {

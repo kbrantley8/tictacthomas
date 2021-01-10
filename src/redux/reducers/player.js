@@ -1,7 +1,7 @@
 import {
     START_GAME,
-    END_GAME,
-    SWITCH_PLAYER_TURN,
+    PLAYER_ACTION,
+    AI_TURN,
     PLAYER1_WINS,
     PLAYER2_WINS,
     PLAYERS_TIE,
@@ -23,12 +23,8 @@ var playere_reducer = (state = defaultState, action) => {
                 ...state,
                 currentPlayer: 1
             };
-        case END_GAME:
-            return {
-                ...state,
-                currentPlayer: 0
-            };
-        case SWITCH_PLAYER_TURN:
+        case PLAYER_ACTION:
+        case AI_TURN:
             return {
                 ...state,
                 currentPlayer: (state.currentPlayer % 2) + 1
