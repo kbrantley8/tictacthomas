@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import { connect } from 'react-redux';
 import Square from './components/Square';
-import { CHECK_WIN, PLAYER1_WINS, PLAYER2_WINS, PLAYERS_TIE, START_GAME, SWITCH_GAMEMODE } from './redux/actionTypes'
+import { CHANGE_BACKGROUND, CHECK_WIN, PLAYER1_WINS, PLAYER2_WINS, PLAYERS_TIE, START_GAME, SWITCH_GAMEMODE } from './redux/actionTypes'
 
 const mapStateToProps = state => ({
   ...state.board,
@@ -15,13 +15,13 @@ const mapDispatchToProps = dispatch => ({
   player2Win: () => dispatch({ type: PLAYER2_WINS }),
   playersTie: () => dispatch({ type: PLAYERS_TIE }),
   startGame: () => dispatch({ type: START_GAME }),
-  changeGamemode: (num) => dispatch({ type: SWITCH_GAMEMODE, payload: num })
+  changeGamemode: (num) => dispatch({ type: SWITCH_GAMEMODE, payload: num }),
+  changeBackground: () => dispatch({ type: CHANGE_BACKGROUND })
 });
 
 class App extends React.Component {
   constructor(props) {
     super(props)
-    document.body.style = 'background: black;';
     this.props.startGame();
   }
 
@@ -51,11 +51,15 @@ class App extends React.Component {
     }
   }
 
+  changeBackground = () => {
+    this.props.changeBackground();
+  }
+
   render() {
     return (
       <div className="App">
         <div id="title">
-          <h1>TIC TAC THOMAS</h1>
+          <h1 onClick={() => this.changeBackground()}>TIC TAC THOMAS</h1>
         </div>
         <div className="menu">
           <div className={(this.props.gamemode === 0) ? "selected menu_item" : "menu_item"} onClick={() => this.updateGamemode(0)}>
@@ -69,7 +73,7 @@ class App extends React.Component {
           </div>
         </div>
         <div id="game_board">
-          <div key={this.props.board} className="game_board_outline">
+          <div key={this.props.board} style={(this.props.background) ? { border: "3px solid white" } : {}} className="game_board_outline">
             {this.props.board.map((status, index) => (
               <Square 
                 key={index}

@@ -6,7 +6,8 @@ import {
     PLAYER1_WINS,
     PLAYER2_WINS,
     PLAYERS_TIE,
-    RESET_GAME
+    RESET_GAME,
+    CHANGE_BACKGROUND
 } from '../actionTypes';
 import { Game_AI } from '../../scary_algorithm/index';
 
@@ -16,7 +17,8 @@ const defaultState = {
     board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
     inProgress: true,
     gamemode: 0,
-    winner: 0
+    winner: 0,
+    background: true
 }
 
 var board_reducer = (state = defaultState, action) => {
@@ -112,6 +114,11 @@ var board_reducer = (state = defaultState, action) => {
                 ...state,
                 board: [0, 0, 0, 0, 0, 0, 0, 0, 0],
                 inProgress: true
+            }
+        case CHANGE_BACKGROUND:
+            return {
+                ...state,
+                background: !state.background
             }
         default:
             return state;

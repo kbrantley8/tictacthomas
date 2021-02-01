@@ -10,8 +10,8 @@ This is a tic tac toe game where you can choose to play against the AI or agains
 
 Using node's npm:
 
-`npm install`
+# `npm install`
 
 and then:
 
-`npm start`
+# `npm start`

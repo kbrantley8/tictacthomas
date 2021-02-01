@@ -7,3 +7,4 @@ export const PLAYERS_TIE = 'PLAYERS_TIE';
 export const RESET_GAME = 'RESET_GAME';
 export const AI_TURN = 'AI_TURN';
 export const CHECK_WIN = 'CHECK_WIN';
+export const CHANGE_BACKGROUND = 'CHANGE_BACKGROUND';
